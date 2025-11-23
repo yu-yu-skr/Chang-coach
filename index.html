@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>小張教練｜桃園桌球教學介紹</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "Noto Sans TC", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top, #020617, #020617 40%, #000);
+      color: #e5e7eb;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* 頂部區 */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      background: rgba(15, 23, 42, 0.92);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .nav-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 19px;
+      letter-spacing: 1px;
+    }
+
+    .logo-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 30% 20%, #22c55e, #38bdf8 55%, #0ea5e9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .nav-links a {
+      padding: 6px 12px;
+      border-radius: 999px;
+      transition: background 0.15s ease, transform 0.1s ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(148, 163, 184, 0.2);
+      transform: translateY(-1px);
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px 20px 40px;
+    }
+
+    /* Hero 區塊 */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(34, 197, 94, 0.6);
+      background: rgba(22, 163, 74, 0.12);
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-size: clamp(28px, 4.2vw, 34px);
+      font-weight: 800;
+      line-height: 1.25;
+      margin: 0 0 10px;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(135deg, #22c55e, #38bdf8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      opacity: 0.92;
+      margin-bottom: 14px;
+      line-height: 1.7;
+    }
+
+    .hero-bullets {
+      font-size: 14px;
+      opacity: 0.92;
+      margin: 0 0 18px;
+      padding-left: 1.1em;
+      line-height: 1.6;
+    }
+
+    .hero-bullets li {
+      margin-bottom: 4px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.1s ease, box-shadow 0.15s ease, opacity 0.1s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #f9fafb;
+      box-shadow: 0 12px 30px rgba(34, 197, 94, 0.55);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 36px rgba(34, 197, 94, 0.65);
+    }
+
+    .btn-outline {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      color: #e5e7eb;
+    }
+
+    .btn-outline:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 26px rgba(56, 189, 248, 0.4);
+      border-color: #38bdf8;
+    }
+
+    .hero-photo-card {
+      position: relative;
+      border-radius: 22px;
+      overflow: hidden;
+      background: #020617;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.95);
+      min-height: 260px;
+    }
+
+    .hero-photo-bg {
+      position: absolute;
+      inset: 0;
+      background-position: center;
+      background-size: cover;
+      filter: saturate(1.05) contrast(1.02);
+      transform: scale(1.02);
+    }
+
+    .hero-photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top right,
+        rgba(15, 23, 42, 0.9),
+        rgba(15, 23, 42, 0.1)
+      );
+    }
+
+    .hero-photo-content {
+      position: relative;
+      padding: 18px 18px 16px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .hero-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 11px;
+    }
+
+    .hero-chip {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.86);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+    }
+
+    .hero-name {
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .hero-role {
+      font-size: 13px;
+      opacity: 0.85;
+    }
+
+    /* 共用區塊樣式 */
+    section {
+      margin-bottom: 36px;
+    }
+
+    .section-header {
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 19px;
+      font-weight: 700;
+      margin: 0 0 4px;
+    }
+
+    .section-sub {
+      font-size: 13px;
+      opacity: 0.7;
+    }
+
+    .divider {
+      height: 1px;
+      width: 100%;
+      background: linear-gradient(
+        to right,
+        rgba(148, 163, 184, 0.55),
+        transparent
+      );
+      margin-bottom: 16px;
+    }
+
+    /* 個人介紹 */
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 768px) {
+      .about-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .about-text {
+      font-size: 14px;
+      opacity: 0.93;
+      line-height: 1.8;
+    }
+
+    .about-block {
+      margin-bottom: 14px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .pill {
+      font-size: 12px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .about-card {
+      border-radius: 20px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(51, 65, 85, 0.95);
+      padding: 16px 16px 14px;
+      box-shadow: 0 14px 34px rgba(15, 23, 42, 1);
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 3px solid #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+      margin-bottom: 10px;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-name {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .about-meta {
+      font-size: 13px;
+      opacity: 0.88;
+      line-height: 1.6;
+    }
+
+    /* 照片展示 */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+    }
+
+    .photo-card {
+      border-radius: 18px;
+      overflow: hidden;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(51, 65, 85, 0.95);
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 1);
+      transition: transform 0.12s ease, box-shadow 0.12s ease,
+        border-color 0.12s ease;
+    }
+
+    .photo-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(56, 189, 248, 0.85);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 1);
+    }
+
+    .photo-media {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: radial-gradient(circle at top, #0f172a, #020617);
+    }
+
+    .photo-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-tag {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(148, 163, 184, 0.8);
+    }
+
+    .photo-body {
+      padding: 10px 13px 12px;
+      font-size: 13px;
+      opacity: 0.92;
+      line-height: 1.6;
+    }
+
+    .photo-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    /* 價格＆上課方式 */
+    .pricing-card {
+      border-radius: 20px;
+      background: radial-gradient(circle at top left, #22c55e22, #020617);
+      border: 1px solid rgba(34, 197, 94, 0.7);
+      padding: 16px 18px 14px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 1);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .pricing-main {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 6px;
+      color: #bbf7d0;
+    }
+
+    .pricing-note {
+      font-size: 13px;
+      opacity: 0.9;
+      margin-bottom: 8px;
+    }
+
+    .pricing-list {
+      margin: 0;
+      padding-left: 1.1em;
+      font-size: 13px;
+      opacity: 0.95;
+    }
+
+    .pricing-list li {
+      margin-bottom: 4px;
+    }
+
+    /* 聯絡方式 */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .contact-text {
+      font-size: 14px;
+      opacity: 0.93;
+      line-height: 1.8;
+    }
+
+    .contact-box {
+      border-radius: 18px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(51, 65, 85, 0.95);
+      padding: 14px 16px;
+      font-size: 13px;
+      box-shadow: 0 14px 34px rgba(15, 23, 42, 1);
+    }
+
+    .contact-row {
+      margin-bottom: 8px;
+    }
+
+    .contact-label {
+      font-size: 12px;
+      opacity: 0.7;
+    }
+
+    .contact-value {
+      font-size: 14px;
+      word-break: break-all;
+    }
+
+    footer {
+      border-top: 1px solid rgba(31, 41, 55, 0.95);
+      padding: 16px 20px 22px;
+      text-align: center;
+      font-size: 12px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-inner">
+      <div class="logo">
+        <div class="logo-icon">🏓</div>
+        <span>小張教練 · 桃園桌球</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">關於教練</a>
+        <a href="#photos">照片花絮</a>
+        <a href="#pricing">課程與價格</a>
+        <a href="#contact">聯絡方式</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div>
+        <div class="hero-tag">
+          <span>桃園地區桌球教學</span>
+          <span>一對一｜小團體</span>
+        </div>
+        <h1 class="hero-title">
+          讓每一顆球，<br />都成為提升專注與自信的
+          <span class="hero-highlight">機會</span>
+        </h1>
+        <p class="hero-sub">
+          嗨，我是<strong>小張教練（張豫）</strong>。目前就讀中原大學電子工程系，
+          同時在桃園指導國小與青少年桌球，也服務想進步的學生與上班族。
+        </p>
+        <ul class="hero-bullets">
+          <li>重視基本功、步伐與比賽觀念，不只是把球打回去。</li>
+          <li>依學生目標調整課程：興趣培養、校隊實力、比賽準備都可以。</li>
+          <li>經營 YouTube「小章魚 Skr」，超過 7,000 名訂閱者，一起紀錄桌球與生活。</li>
+        </ul>
+        <div class="hero-actions">
+          <!-- TODO: 將 href 改成你的頻道連結 -->
+          <a
+            class="btn btn-primary"
+            href="https://www.youtube.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            看影片認識教學風格 🎥
+          </a>
+          <a href="#contact" class="btn btn-outline">想詢問課程 ➜ 看聯絡方式</a>
+        </div>
+      </div>
+
+      <!-- 右側教學大合照 -->
+      <aside class="hero-photo-card">
+        <!-- TODO: 把這張換成你的教學合照路徑 -->
+        <div
+          class="hero-photo-bg"
+          style="background-image: url('images/hero_coaching.jpg');"
+        ></div>
+        <div class="hero-photo-overlay"></div>
+        <div class="hero-photo-content">
+          <div class="hero-chip-row">
+            <div class="hero-chip">實際帶隊教學現場</div>
+            <div class="hero-chip">國小到青少年皆可</div>
+          </div>
+          <div>
+            <div class="hero-name">小張教練 · 張豫</div>
+            <div class="hero-role">桌球教練｜中原大學電子工程系｜桌球社社長</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- 關於教練 -->
+    <section id="about">
+      <div class="section-header">
+        <h2 class="section-title">關於小張教練</h2>
+        <div class="section-sub">讓家長與學生快速了解我在做什麼、怎麼教</div>
+      </div>
+      <div class="divider"></div>
+
+      <div class="about-layout">
+        <div class="about-text">
+          <div class="about-block">
+            <strong>桌球背景</strong><br />
+            從國小加入桌球校隊，後來進入職業隊受訓，累積扎實的基本功與比賽經驗。
+            大學就讀中原電子工程系期間，重新投入訓練，同時開始從事教學。
+          </div>
+          <div class="about-block">
+            <strong>教學理念</strong><br />
+            我希望學生不只會打球，而是學會面對挫折、保持專注、願意為一件事情努力。
+            課程節奏可以依學生個性調整，有的人需要穩定打底，有的人適合多實戰與比賽模擬。
+          </div>
+          <div class="about-block">
+            <strong>適合的學生</strong><br />
+            ・第一次接觸桌球，希望從零建立正確動作。<br />
+            ・學校校隊／社團成員，想把實力再往上推。<br />
+            ・大學生、上班族想找一個固定時間運動、紓壓又有成就感。
+          </div>
+          <div class="about-block">
+            <strong>教學重點</strong>
+            <div class="pill-row">
+              <span class="pill">基本步伐與站姿</span>
+              <span class="pill">正反手攻球與拉球</span>
+              <span class="pill">發球與接發球</span>
+              <span class="pill">比賽策略與節奏</span>
+              <span class="pill">比賽心態與調整</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="about-card">
+          <div class="avatar">
+            <!-- TODO: 換成你的個人照路徑 -->
+            <img src="C:\Users\CAHNG YU\Desktop\簡立網站\Screenshot_2023-12-29-22-55-25-36_1c337646f29875672b5a61192b9010f9_Original.JPEG" alt="小張教練個人照" />
+          </div>
+          <div class="about-name">小張教練（張豫）</div>
+          <div class="about-meta">
+            中原大學電子工程系<br />
+            桌球社社長 · 桃園桌球教練<br />
+            YouTube「小章魚 Skr」創作者
+          </div>
+          <div class="about-meta" style="margin-top:10px;">
+            教學地區以<strong>桃園地區</strong>為主，可依實際情況安排學校或球館場地。
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 照片花絮 -->
+    <section id="photos">
+      <div class="section-header">
+        <h2 class="section-title">照片花絮</h2>
+        <div class="section-sub">簡單紀錄一些比賽、教學與日常的樣子</div>
+      </div>
+      <div class="divider"></div>
+
+      <div class="photo-grid">
+        <!-- 教學合照（再出現一次，家長很吃這個） -->
+        <article class="photo-card">
+          <div class="photo-media">
+            <!-- TODO: 同一張教學照 -->
+            <img src="C:\Users\CAHNG YU\Desktop\簡立網站\1724850565351_Original.JPEG" alt="教學合照" />
+            <span class="photo-tag">教學現場</span>
+          </div>
+          <div class="photo-body">
+            <div class="photo-title">與學生一起練球的日常</div>
+            <p>團體課與校隊訓練中，會依程度分組練習，讓每個人都能在自己的節奏下進步。</p>
+          </div>
+        </article>
+
+        <!-- 比賽照 -->
+        <article class="photo-card">
+          <div class="photo-media">
+            <!-- TODO: 換成你的比賽照 -->
+            <img src="C:\Users\CAHNG YU\Desktop\簡立網站\IMG_0668.JPEG"alt="比賽照片" />
+            <span class="photo-tag">比賽經驗</span>
+          </div>
+          <div class="photo-body">
+            <div class="photo-title">從選手走到教練</div>
+            <p>過去的比賽經驗，現在用在幫學生做賽前準備、戰術規劃與臨場調整。</p>
+          </div>
+        </article>
+
+        <!-- 生活照 -->
+        <article class="photo-card">
+          <div class="photo-media">
+            <!-- TODO: 換成你的生活照 -->
+            <img src="C:\Users\CAHNG YU\Desktop\簡立網站\IMG_8630.JPEG" alt="生活照片" />
+            <span class="photo-tag">大學生生活</span>
+          </div>
+          <div class="photo-body">
+            <div class="photo-title">在課業與教學之間取得平衡</div>
+            <p>
+              兼顧念書、創作與教球，也希望把時間管理與自律的習慣，分享給一起練球的同學和學生。
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 價格與課程說明 -->
+    <section id="pricing">
+      <div class="section-header">
+        <h2 class="section-title">課程與價格</h2>
+        <div class="section-sub">價格透明，細節可以先聊再決定</div>
+      </div>
+      <div class="divider"></div>
+
+      <div class="pricing-card">
+        <div class="pricing-main">NT$ 800 ～ 1,000 / 小時</div>
+        <div class="pricing-note">
+          以一對一教學為主，實際費用會依<strong>上課地點、時段與學生程度</strong>做微調。
+          確定前都可以先討論，再決定是否安排體驗課。
+        </div>
+        <ul class="pricing-list">
+          <li>可依學生目標規劃：興趣培養、校隊訓練或比賽準備。</li>
+          <li>若有雙人或小團體需求，也可以再討論合適方式與費用。</li>
+          <li>長期固定時段，可一起安排循序漸進的練球計畫。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 聯絡方式 -->
+    <section id="contact">
+      <div class="section-header">
+        <h2 class="section-title">聯絡方式</h2>
+        <div class="section-sub">歡迎家長、學生或廠商與我聯繫</div>
+      </div>
+      <div class="divider"></div>
+
+      <div class="contact-grid">
+        <div class="contact-text">
+          <p>
+            如果你是家長，希望孩子找到一個可以長期投入的運動；或你是學生、上班族，想讓自己的桌球更穩定，
+            都可以先簡單自我介紹，再一起討論合適的上課方式。
+          </p>
+          <p>
+            也歡迎桌球相關品牌或運動廠商合作洽詢，我會在真實的教學與內容中，穩定地呈現品牌價值。
+          </p>
+        </div>
+        <div class="contact-box">
+          <div class="contact-row">
+            <div class="contact-label">Email</div>
+            <div class="contact-value">0979550902a@gmail.com</div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-label">YouTube 頻道</div>
+            <div class="contact-value">
+              <!-- TODO: 把 href 改成你真正的頻道網址 -->
+              <a
+                href="https://www.youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                搜尋「小章魚 Skr」或點此前往頻道
+              </a>
+            </div>
+          </div>
+          <div class="contact-row" style="margin-top:8px;font-size:12px;opacity:0.8;">
+            傳訊息時可以簡單告訴我：年齡、程度、希望上課時段與地區，方便我回覆更完整的建議 🙌
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    小張教練 · 張豫 ｜ 桃園桌球教學 ｜ 本頁面僅供課程介紹與合作洽詢使用。
+  </footer>
+</body>
+</html>
